@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+	<data>
+		<!-- Menu Cias en menú principal-->
+		<menuitem id="menu_citas" name="Citas" sequence="25"/>
+		<!--Submenú Citas dentro del módulo-->
+		<menuitem id="sub_menu_citas" name="Citas" parent="menu_citas"/>
+		
+		<record model="ir.actions.act_window" id="listar_citas">
+			
+			<field name="name">Citas</field>
+
+			<field name="res_model">Citasjfvm.citas</field>
+
+			<field name="view_mode">tree,form</field>
+
+		</record>
+
+		<!--Menú de listar todas las citas creadas-->		
+		<menuiitem id="sub_menu_citas_listar_citas" name="Listar libros" parent="sub_menu_citas" action="listar_citas"/>
+
+		<record id="view_citas_tree" model="ir.ui.view">
+		
+			<field name="name">citas.citas.tree</field>
+			
+			<field name="model">Citasjfvm.citas</field>
+							
+			<field name="arch" type="xml"/>
+
+				<tree string="Idea list">
+
+					<field name="autor"/>
+					<field name="fecha_creacion"/>
+					<field name="fecha_visionada"/>
+					<field name="texto"/>
+					<field name="isChecked"/>
+					<field name="id"/>
+				</tree>
+		</record>	
+
+
+	</data>
+</odoo>

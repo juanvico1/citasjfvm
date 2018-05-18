@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+   
+         <record model="ir.ui.view" id="view_citas_form">
+            <field name="name">x_citasjfvm.citas.form</field>
+            <field name="model">x_citasjfvm.citas</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+              <form string="citas">
+                <sheet>
+                  <notebook coolspan="6">
+                    <page name="informacion_citas" string="Información de la cita">
+                      <group col="2" coolspan="2" name="detalles_citas">
+                        <field name="name"/>
+                        <field name="texto"/>
+                        <field name="fecha_visualizacion"/>
+                        <field name="id"/>
+                      </group>
+                    </page>
+                  </notebook>
+                </sheet>
+              </form>
+            </field>
+          </record>
+
+        <record model="ir.ui.view" id="view_citas_tree">
+            <field name="name">x_citasjfvm.citas.tree</field>
+            <field name="model">x_citasjfvm.citas</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+              <tree string="Citas">
+                    <field name="name"/>
+                    <field name="fecha_visualizacion"/>
+                    <field name="texto"/>
+                    <field name="create_uid"/>
+                    
+                    <field name="id"/>
+              </tree>
+            </field>
+          </record>
+
+        <record model="ir.actions.act_window" id="citas_listar_action">
+            <field name="name">Citas</field>
+            <field name="res_model">x_citasjfvm.citas</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Crea una nueva cita
+                </p>
+            </field>
+        </record>
+		
+	
+    
+
+        <!-- top level menu: no parent -->
+        <menuitem id="main_citas_menu" name="Citasjfvm"/>
+      
+        <menuitem id="submenu_citas" name="Citas" parent="main_citas_menu"/>
+        <menuitem id="listar_citas" name="Listar" parent="submenu_citas" action="citas_listar_action"/>
+	<!--	<menuitem id="buscar_citas" name="Buscar" parent="submenu_citas" action="citas_search_view_filter" sequence="10"/>
+	-->	
+    </data>
+</odoo>
